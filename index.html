@@ -641,6 +641,10 @@ const data = JSON.parse(text);
                 }
                 else if (match.result.includes(team2)) {
                     winner = team2;
+                }else {
+             teams[team1] += 1;
+                               teams[team2] += 1;
+  
                 }
 
                 if (winner) {

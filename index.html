@@ -644,7 +644,12 @@ const data = JSON.parse(text);
                 }else {
              teams[team1] += 1;
                                teams[team2] += 1;
-  
+   completedMatches.push([
+                        team1,
+                        team2,
+                        matchDate,
+                        'No Result'
+                    ]);
                 }
 
                 if (winner) {

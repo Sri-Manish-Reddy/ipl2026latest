@@ -580,16 +580,12 @@ async function init() {
 }
  async function fetchIPLData() {
     try {
-
-      const response = await fetch(
-    "https://api.allorigins.win/raw?url=https://ipl-okn0.onrender.com/ipl-2026-live-score"
-          // "https://ipl-okn0.onrender.com/ipl-2026-live-score"
-
+ 
+const response = await fetch(
+    "https://oracleapex.com/ords/demo_manish_workspace/ipl/matches/"
 );
-const text = await response.text();
 
-console.log(text);
-const data = JSON.parse(text);
+const data = await response.json();
         // RESET
         teams = {};
         allMatches = [];
@@ -606,8 +602,7 @@ const data = JSON.parse(text);
         // -----------------------------
         // READ MATCHES FROM API
         // -----------------------------
-        const matches = data.matches;
-
+const matches = data.items;
         Object.values(matches).forEach(match => {
 
             const team1 = match.team_1;
@@ -617,10 +612,9 @@ const data = JSON.parse(text);
  if (team1 === "TBA" || team2 === "TBA") return;
             // Convert date
             let matchDate = "2026-05-01";
-
-            if (match.start_time_utc) {
-                matchDate = match.start_time_utc.split("T")[0];
-            }
+if (match.match_date) {
+    matchDate = match.match_date.split("T")[0];
+}
 
             allMatches.push([
                 team1,
